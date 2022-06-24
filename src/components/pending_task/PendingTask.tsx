@@ -15,6 +15,11 @@ const PendingTask: FunctionComponent<IPendingTask> = ({ tasks, setTasks }) => {
     });
   };
 
+  const deleteTask = (id: number) => (e: React.MouseEvent<HTMLElement>) => {
+    let deletedTask = tasks.filter((task) => task.id !== id);
+    setTasks(deletedTask);
+  };
+
   const renderTasks = (): JSX.Element[] => {
     return tasks?.map((task) => {
       return (
@@ -25,6 +30,7 @@ const PendingTask: FunctionComponent<IPendingTask> = ({ tasks, setTasks }) => {
               <button onClick={markTaskAsDone(task.id)}>
                 Mark Task As Done
               </button>
+              <button onClick={deleteTask(task.id)}>Delete Task</button>
             </div>
           ) : null}
         </React.Fragment>

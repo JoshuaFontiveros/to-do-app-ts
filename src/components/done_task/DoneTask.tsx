@@ -5,9 +5,10 @@ interface IDoneTask {
   tasks: ImportedDoneTask["tasks"];
   setTasks: React.Dispatch<React.SetStateAction<ImportedDoneTask["tasks"]>>;
 }
+
 const DoneTask: React.FC<IDoneTask> = ({ tasks, setTasks }) => {
   const renderTasks = () => {
-    return tasks.map((task) => {
+      return tasks.map((task) => {
       return (
         <React.Fragment key={task.id}>
           {task.status === "done" ? (
@@ -21,6 +22,7 @@ const DoneTask: React.FC<IDoneTask> = ({ tasks, setTasks }) => {
       );
     });
   };
+
   return <div>DoneTask: {renderTasks()}</div>;
 };
 
